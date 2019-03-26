@@ -273,7 +273,7 @@ $(function () {
             // document.getElementById("overlay").style.display = "block";
             $("#overlay").fadeIn("slow")
             // 1초뒤에 text_p 사라지게 하기
-            clearTimeout(timeout);
+            clearTimeout(timeout); // 초기화시켜서 반복안되게하기
             timeout=setTimeout(function() {
                 $("#overlay").fadeOut("slow");
                 // document.getElementById("overlay").style.display = "none";
