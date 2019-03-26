@@ -115,11 +115,6 @@ function displayPlaces(places) {
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function (marker, place) {
             daum.maps.event.addListener(marker, 'mouseover', function () {
-                var latlng = new daum.maps.LatLng(place.x, place.y);
-                console.log(latlng.toCoords().toString());
-                console.log(place.x, place.y);
-                var bounds = map.getBounds();
-                console.log("bounds : " + bounds);
                 displayInfowindow(marker, place.place_name);
             });
             daum.maps.event.addListener(marker, 'mouseout', function () {
