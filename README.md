@@ -11,9 +11,11 @@ This repo is about blogging good restaurant where I visit
 4. 리뷰
 5. 로컬스토리지에 저장
 
+**이 웹은 맛집을 랜덤하게 10개를 욜랴숄랴욜랴**
 
+프로젝트 기간은 5일이며 기간내에 모든걸 다 구현하는게 목표입니다.
 
-**필요기술**
+**사용기술**
 
 지도API
 
@@ -21,11 +23,6 @@ This repo is about blogging good restaurant where I visit
  - 결과 로그
  -  결과 뿌리기
  - 마크클릭
-
-
-
-
-
 
 
 
