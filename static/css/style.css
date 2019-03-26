@@ -1,23 +1,15 @@
-/*
- *  Common
-*/
+/* Common */
 html, body {
     height: 100%;
 }
+/*********************************************/
 /* Map option */
 #map{
     width: 100%;
-    height: calc(100vh - 56px);   /* calc 계산하다 약자, 전체 높이에서 navbar 높이를 뺀다. */
+    height: calc(100vh - 56px);
     position:relative;
     overflow:hidden;
 }
-
-/* 위치 확인용 컬러박스 (나중에 삭제) */
-.color_box{}
-
-/*
- *  Map
-*/
 .map_wrap, .map_wrap * {
     margin: 0;
     padding: 0;
@@ -31,7 +23,7 @@ html, body {
 .map_wrap {
     position: relative;
     width: 100%;
-    height: calc(100vh - 56px); /* calc 계산하다 약자, 전체 높이에서 navbar 높이를 뺀다. */
+    height: calc(100vh - 56px);
 }
 #menu_wrap {
     overflow-y: auto;
@@ -40,12 +32,12 @@ html, body {
     left: 0;
     bottom: 0;
     z-index: 1;
-    width: 250px;
+    width: 300px;
     margin: 10px 0 30px 10px;
     padding: 5px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
+    border-radius: 0px;
 }
 .bg_white {
     background: #FFF;
@@ -62,9 +54,6 @@ html, body {
 }
 #menu_wrap .option p {
     margin: 10px 0;
-}
-#menu_wrap .option button {
-    margin-left: 5px;
 }
 #placesList li {
     list-style: none;
@@ -164,47 +153,9 @@ html, body {
     cursor: default;
     color: #777;
 }
-.color_box {
-    background-color: gray;
+.food_input{
+    margin-top:10px;
 }
-
-.search_d{
-    position: absolute;
-    display: inline-block;
-    top: 100px;
-    left: 50px;
-    width: 300px;
-    height: 200px;
-    z-index: 1000;
-}
-.food_select{
-    position: absolute;
-    display: inline-block;
-    top: 310px;
-    left: 50px;
-    width: 300px;
-    height: 50px;
-    z-index: 1000;
-}
-.search_one{
-    position: absolute;
-    display: inline-block;
-    top: 350px;
-    left: 50px;
-    width: 300px;
-    height: 50px;
-    z-index: 1000;
-}
-.search_two{
-    position: absolute;
-    display: inline-block;
-    top: 390px;
-    left: 50px;
-    width: 300px;
-    height: 50px;
-    z-index: 1000;
-}
-
 #overlay {
     position: absolute;
     top: 0px;
