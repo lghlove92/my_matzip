@@ -2,6 +2,12 @@
 html, body {
     height: 100%;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin-bottom: 0;
+}
 /*********************************************/
 /* Map option */
 #map{
@@ -176,7 +182,6 @@ html, body {
 .food_input{
     margin-top:10px;
 }
-
 #overlay {
     position: absolute;
     top: 0px;
@@ -196,3 +201,117 @@ html, body {
     transform: translate(-28%,-55%);
 }
 
+/*
+    Detail Page
+*/
+.detail_content {
+    min-height: calc(100vh - 56px);
+    padding-bottom: 40px;
+    background-color: #F3F3F3;
+}
+.detail_wrap {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+.detail_section {
+    background-color: #FFF;
+    border: 1px solid #EBEBEB;
+}
+.detail_section + .detail_section {
+    margin-top: 10px;
+}
+.detail_section .top_bg {
+    height: 270px;
+    background-color: #fc9842;
+    background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%);
+}
+.detail_section .title_wrap {
+    width: calc(100% - 60px);
+    margin: -60px 30px 0;
+    padding-top: 30px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+.detail_section .title_wrap .category_name {
+    font-size: 14px;
+}
+.detail_section .title_wrap .btn_wrap a {
+    width: 80px;
+    padding: 40px 0 20px;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+.detail_section .ico_comm {
+    overflow: hidden;
+    display: block;
+    width: 33px;
+    height: 33px;
+    margin: 0 auto;
+    font-size: 1px;
+    line-height: 0;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+}
+.detail_section .ico_storemap {
+    background-position: -80px -440px;
+}
+.detail_section .ico_route {
+    background-position: -120px -440px;
+}
+.detail_section .ico_roadmap {
+    background-position: -80px -330px;
+}
+.detail_section .detail_info {
+    padding: 25px 80px 40px;
+}
+.detail_section .detail_info ul {
+    padding-left: 25px;
+    list-style: none;
+}
+.detail_section .detail_info ul li {
+    position: relative;
+}
+.detail_section .road_address_name::before {
+    content: "";
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: -20px;
+    width: 13px;
+    height: 18px;
+    font-size: 1px;
+    line-height: 0;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    background-position: -40px -30px;
+}
+.detail_section .address_name {
+    color: #999;
+}
+.detail_section .phone::before {
+    content: "";
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: -22px;
+    width: 15px;
+    height: 15px;
+    font-size: 1px;
+    line-height: 0;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    background-position: -100px -30px;
+}
+/********** End of Detail Page ***********/
