@@ -123,7 +123,7 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'click', function () {
                 var query = '?';
                 for (var key in place) {
-                    query = query + '&' + key + '=' + place[key];
+                  query = query + key + '=' + place[key] + '&';
                 }
                 location.href = "detail.html" + query;
             });
@@ -251,62 +251,6 @@ function removeAllChildNods(el) {
     }
 }
 
-// 추가한거
-$(function () {
-    $(document).keydown(function (e) {
-        // ctrl 누를때 확대 축소기능 열기
-        if (e.keyCode == 17) {
-            map.setZoomable(true);
-        }
-    })
-    // ctrl키를 땔때
-    $(document).keyup(function (e) {
-        map.setZoomable(false);
-    })
-
-
-    $(".map_wrap").on("mousewheel DOMMouseScroll", function (e) {
-        e.preventDefault();
-        // ctrl누를때 text_p 나오게하기
-        if (e.ctrlKey == false) {
-            // document.getElementById("overlay").style.display = "block";
-            $("#overlay").fadeIn("slow")
-            // 1초뒤에 text_p 사라지게 하기
-            setTimeout(function () {
-                $("#overlay").fadeOut("slow");
-                // document.getElementById("overlay").style.display = "none";
-            }, 1000);
-        }
-    });
-
-
-
-    // 현재 위치에 위도, 경도를 가져오는 로직
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords.latitude, position.coords.longitude);
-        my_location_find(position.coords.latitude, position.coords.longitude);
-    });
-});
-
-
-
-// ctrl키를 누를때
-$(document).keydown(function (e) {
-    if (e.keyCode == 17) {
-        map.setZoomable(true);
-    }
-});
-// ctrl키를 땔때
-$(document).keyup(function (e) {
-    map.setZoomable(false);
-});
-// 위치 검색
-$(".form_location").click(function () {
-    $(".address_tracking").show()
-});
-
-
-
 // 우편번호 찾기 찾기 화면을 넣을 element
 var element_wrap = document.getElementById('wrap');
 
@@ -336,3 +280,43 @@ function sample3_execDaumPostcode() {
     element_wrap.style.display = 'block';
 }
 
+// 추가한거
+$(function () {
+    $(document).keydown(function (e) {
+        // ctrl 누를때 확대 축소기능 열기
+        if (e.keyCode == 17) {
+            map.setZoomable(true);
+        }
+    })
+    // ctrl키를 땔때
+    $(document).keyup(function (e) {
+        map.setZoomable(false);
+    })
+
+    var timeout;
+    $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+
+        e.preventDefault();
+        
+        // ctrl누를때 text_p 나오게하기
+        if (e.ctrlKey == false) {
+            // document.getElementById("overlay").style.display = "block";
+            $("#overlay").fadeIn("slow");
+            // 1초뒤에 text_p 사라지게 하기
+
+            clearTimeout(timeout); // 초기화시켜서 반복안되게하기
+            timeout=setTimeout(function() {
+                $("#overlay").fadeOut("slow");
+                // document.getElementById("overlay").style.display = "none";
+            }, 1000);
+        }
+    });
+
+
+
+    // 현재 위치에 위도, 경도를 가져오는 로직
+    navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+        my_location_find(position.coords.latitude, position.coords.longitude);
+    });
+});

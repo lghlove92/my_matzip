@@ -5,12 +5,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Detail</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./static/css/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./static/css/style.css" />
 </head>
 <body>
-  <p>detail</p>
+  <!-- nav bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">My matzip</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
+    <button type="button" class="btn btn-outline-warning login_signin">Login</button>
+  </nav>
+
+  <div class="detail_content">
+    <div class="detail_wrap">
+      <section class="detail_section">
+        <div class="top_bg"></div>
+        <div class="title_wrap">
+          <h1 id="place_name" class="text-center font-weight-bold"></h1>
+          <p id="category_name" class="category_name text-center mt-2"></p>
+          <div class="btn_wrap d-flex justify-content-center">
+            <a href="" id="storemap" target="_blank">
+              <span class="ico_comm ico_storemap"></span>지도
+            </a>
+            <a href="" id="route" target="_blank">
+              <span class="ico_comm ico_route"></span>길찾기
+            </a>
+            <a href="" id="roadmap" target="_blank">
+              <span class="ico_comm ico_roadmap"></span>로드뷰
+            </a>
+          </div>
+        </div>
+        <div class="detail_info">
+          <h6 class="mb-4">상세정보</h6>
+          <ul>
+            <li class="road_address_name" id="road_address_name"></li>
+            <li class="address_name">지번 : <span id="address_name"></span></li>
+            <li class="phone mt-2" id="phone"></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div> 
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -22,6 +63,6 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
-  <script src="./static/js/script.js"></script>
+  <script src="./static/js/detail.js"></script>
 </body>
 </html>
