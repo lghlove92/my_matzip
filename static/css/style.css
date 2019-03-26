@@ -173,8 +173,26 @@ html, body {
     cursor: default;
     color: #777;
 }
-/*********************************************/
 .food_input{
     margin-top:10px;
+}
+
+#overlay {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    background-color: rgba(0,0,0,0.4);
+}
+#overlay p{
+    position: absolute;
+    top: 50%;
+    left: 39%;
+    font-size: 40px;
+    color: white;
+    transform: translate(-28%,-55%);
 }
 

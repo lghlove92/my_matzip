@@ -20,6 +20,7 @@ map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 var zoomControl = new daum.maps.ZoomControl();
 map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+map.setZoomable(false);
 
 // 주소-좌표 변환 객체를 생성
 var geocoder = new daum.maps.services.Geocoder();
@@ -250,8 +251,36 @@ function removeAllChildNods(el) {
     }
 }
 
+// 추가한거
 $(function () {
+    $(document).keydown(function (e) {
+        // ctrl 누를때 확대 축소기능 열기
+        if (e.keyCode == 17) {
+            map.setZoomable(true);  
+        }
+    })
+    // ctrl키를 땔때
+    $(document).keyup(function (e) {
+        map.setZoomable(false);
+    })
 
+    
+    $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+        e.preventDefault();
+        // ctrl누를때 text_p 나오게하기
+        if (e.ctrlKey == false) {
+            // document.getElementById("overlay").style.display = "block";
+            $("#overlay").fadeIn("slow")
+            // 1초뒤에 text_p 사라지게 하기
+            setTimeout(function() {
+                $("#overlay").fadeOut("slow");
+                // document.getElementById("overlay").style.display = "none";
+            },1000);
+        }
+    });
+
+
+    
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
         console.log(position.coords.latitude, position.coords.longitude);
@@ -259,8 +288,7 @@ $(function () {
     });
 });
 
-// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
-map.setZoomable(false);
+
 
 // ctrl키를 누를때
 $(document).keydown(function (e) {
@@ -305,3 +333,4 @@ function sample3_execDaumPostcode() {
     // iframe을 넣은 element를 보이게 한다.
     element_wrap.style.display = 'block';
 }
+
