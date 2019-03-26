@@ -256,7 +256,7 @@ $(function () {
     $(document).keydown(function (e) {
         // ctrl 누를때 확대 축소기능 열기
         if (e.keyCode == 17) {
-            map.setZoomable(true);  
+            map.setZoomable(true);
         }
     })
     // ctrl키를 땔때
@@ -264,23 +264,23 @@ $(function () {
         map.setZoomable(false);
     })
 
-    
-    $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+
+    $(".map_wrap").on("mousewheel DOMMouseScroll", function (e) {
         e.preventDefault();
         // ctrl누를때 text_p 나오게하기
         if (e.ctrlKey == false) {
             // document.getElementById("overlay").style.display = "block";
             $("#overlay").fadeIn("slow")
             // 1초뒤에 text_p 사라지게 하기
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#overlay").fadeOut("slow");
                 // document.getElementById("overlay").style.display = "none";
-            },1000);
+            }, 1000);
         }
     });
 
 
-    
+
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
         console.log(position.coords.latitude, position.coords.longitude);
@@ -320,7 +320,9 @@ function sample3_execDaumPostcode() {
     var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
     new daum.Postcode({
         oncomplete: function (data) {
-            // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+            var addr = data.sido + " " + data.sigungu + " " + data.bname; // 주소 변수
+            $(".form_location").val(addr);
+            $(".address_tracking").hide();
         },
         // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
         onresize: function (size) {
