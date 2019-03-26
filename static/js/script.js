@@ -115,6 +115,11 @@ function displayPlaces(places) {
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function (marker, place) {
             daum.maps.event.addListener(marker, 'mouseover', function () {
+                var latlng = new daum.maps.LatLng(place.x, place.y);
+                console.log(latlng.toCoords().toString());
+                console.log(place.x, place.y);
+                var bounds = map.getBounds();
+                console.log("bounds : " + bounds);
                 displayInfowindow(marker, place.place_name);
             });
             daum.maps.event.addListener(marker, 'mouseout', function () {
@@ -123,7 +128,7 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'click', function () {
                 var query = '?';
                 for (var key in place) {
-                  query = query + '&' + key + '=' + place[key];
+                  query = query + key + '=' + place[key] + '&';
                 }
                 location.href = "detail.html" + query;
             });
@@ -232,7 +237,7 @@ function displayPagination(pagination) {
 
         fragment.appendChild(el);
     }
-    paginationEl.appendChild(fragment); ㄴ
+    paginationEl.appendChild(fragment);
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
