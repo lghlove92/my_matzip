@@ -123,7 +123,7 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'click', function () {
                 var query = '?';
                 for (var key in place) {
-                  query = query + '&' + key + '=' + place[key];
+                    query = query + '&' + key + '=' + place[key];
                 }
                 location.href = "detail.html" + query;
             });
@@ -232,7 +232,7 @@ function displayPagination(pagination) {
 
         fragment.appendChild(el);
     }
-    paginationEl.appendChild(fragment); ㄴ
+    paginationEl.appendChild(fragment);
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
@@ -288,4 +288,49 @@ $(function () {
     });
 });
 
+
+
+// ctrl키를 누를때
+$(document).keydown(function (e) {
+    if (e.keyCode == 17) {
+        map.setZoomable(true);
+    }
+});
+// ctrl키를 땔때
+$(document).keyup(function (e) {
+    map.setZoomable(false);
+});
+// 위치 검색
+$(".form_location").click(function () {
+    $(".address_tracking").show()
+});
+
+
+
+// 우편번호 찾기 찾기 화면을 넣을 element
+var element_wrap = document.getElementById('wrap');
+
+function foldDaumPostcode() {
+    // iframe을 넣은 element를 안보이게 한다.
+    element_wrap.style.display = 'none';
+}
+
+function sample3_execDaumPostcode() {
+    // 현재 scroll 위치를 저장해놓는다.
+    var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+    new daum.Postcode({
+        oncomplete: function (data) {
+            // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+        },
+        // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+        onresize: function (size) {
+            element_wrap.style.height = size.height + 'px';
+        },
+        width: '340px',
+        height: '100%'
+    }).embed(element_wrap);
+
+    // iframe을 넣은 element를 보이게 한다.
+    element_wrap.style.display = 'block';
+}
 
