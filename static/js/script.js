@@ -264,14 +264,17 @@ $(function () {
         map.setZoomable(false);
     })
 
+    
     $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
         e.preventDefault();
         // ctrl누를때 text_p 나오게하기
         if (e.ctrlKey == false) {
-            document.getElementById("overlay").style.display = "block";
+            // document.getElementById("overlay").style.display = "block";
+            $("#overlay").fadeIn("slow")
             // 1초뒤에 text_p 사라지게 하기
             setTimeout(function() {
-                document.getElementById("overlay").style.display = "none";
+                $("#overlay").fadeOut("slow");
+                // document.getElementById("overlay").style.display = "none";
             },1000);
         }
     });
