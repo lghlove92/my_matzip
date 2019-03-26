@@ -20,40 +20,29 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <!-- <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-      </div> -->
     </div>
     <button type="button" class="btn btn-outline-warning login_signin">Login</button>
   </nav>
-
-
-
-
   <div class="map_wrap">
     <div id="map"></div>
 
     <div id="menu_wrap" class="bg_white">
       <div class="option">
-        <input class="form-control" type="text" placeholder="Default input">
-
-        <!-- 동 샐렉트 -->
-        <!-- <div class="search_two">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">위치</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-        </div> -->
+        <input class="form-control form_location" type="text" placeholder="예) 판교역로 235, 분당 주공, 삼평동 681"
+          onclick="sample3_execDaumPostcode()">
         <div>
+          <!-- Address tracking = display:none -->
+          <div class="address_tracking">
+            <!-- <div class="list-group tracking_list">
+              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+              <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
+                aria-disabled="true">Vestibulum at eros</a>
+            </div> -->
+            <div id="wrap"></div>
+          </div>
+          <!-- Address tracking = display:none -->
           <form onsubmit="searchPlaces(); return false;">
             <div class="input-group mb-3 food_input">
               <div class="input-group-prepend">
@@ -61,10 +50,6 @@
               </div>
               <input type="text" value="" id="keyword" size="15" class="form-control" placeholder="#오늘 뭐 먹지...?">
             </div>
-
-
-
-
           </form>
         </div>
       </div>
@@ -78,9 +63,7 @@
 
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
@@ -89,6 +72,7 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script src="./static/js/script.js"></script>
 </body>
 

@@ -32,13 +32,33 @@ html, body {
     left: 0;
     bottom: 0;
     z-index: 1;
-    width: 300px;
+    width: 350px;
     margin: 10px 0 30px 10px;
     padding: 5px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 0px;
 }
+/*********************************************/
+    .address_tracking{
+        overflow-y: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 3;
+        width: 350px;
+        margin: 47px 0 0px 0px;
+        padding: 5px;
+        font-size: 12px;
+        background: white;
+        border-radius: 0px;
+        display: none;
+    }
+    .address_tracking{
+        text-align: left;
+    }
+/*********************************************/
 .bg_white {
     background: #FFF;
 }
@@ -157,3 +177,4 @@ html, body {
 .food_input{
     margin-top:10px;
 }
+
