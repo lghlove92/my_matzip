@@ -3,7 +3,7 @@ html, body {
 }
 #map{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 56px);   /* calc 계산하다 약자, 전체 높이에서 navbar 높이를 뺀다. */
     position:relative;
     overflow:hidden;
 }
