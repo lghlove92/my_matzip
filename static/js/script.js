@@ -223,7 +223,7 @@ function displayPagination(pagination) {
 
         fragment.appendChild(el);
     }
-    paginationEl.appendChild(fragment);
+    paginationEl.appendChild(fragment); ㄴ
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
