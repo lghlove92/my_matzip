@@ -251,12 +251,41 @@ function removeAllChildNods(el) {
     }
 }
 
+// 우편번호 찾기 찾기 화면을 넣을 element
+var element_wrap = document.getElementById('wrap');
+
+function foldDaumPostcode() {
+    // iframe을 넣은 element를 안보이게 한다.
+    element_wrap.style.display = 'none';
+}
+
+function sample3_execDaumPostcode() {
+    // 현재 scroll 위치를 저장해놓는다.
+    var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+    new daum.Postcode({
+        oncomplete: function (data) {
+            var addr = data.sido + " " + data.sigungu + " " + data.bname; // 주소 변수
+            $(".form_location").val(addr);
+            $(".address_tracking").hide();
+        },
+        // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+        onresize: function (size) {
+            element_wrap.style.height = size.height + 'px';
+        },
+        width: '340px',
+        height: '100%'
+    }).embed(element_wrap);
+
+    // iframe을 넣은 element를 보이게 한다.
+    element_wrap.style.display = 'block';
+}
+
 // 추가한거
 $(function () {
     $(document).keydown(function (e) {
         // ctrl 누를때 확대 축소기능 열기
         if (e.keyCode == 17) {
-            map.setZoomable(true);  
+            map.setZoomable(true);
         }
     })
     // ctrl키를 땔때
@@ -266,28 +295,28 @@ $(function () {
 
     var timeout;
     $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+
         e.preventDefault();
         
         // ctrl누를때 text_p 나오게하기
         if (e.ctrlKey == false) {
             // document.getElementById("overlay").style.display = "block";
-            $("#overlay").fadeIn("slow")
+            $("#overlay").fadeIn("slow");
             // 1초뒤에 text_p 사라지게 하기
+
             clearTimeout(timeout); // 초기화시켜서 반복안되게하기
             timeout=setTimeout(function() {
                 $("#overlay").fadeOut("slow");
                 // document.getElementById("overlay").style.display = "none";
-            },1000);
+            }, 1000);
         }
     });
 
 
-    
+
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
         console.log(position.coords.latitude, position.coords.longitude);
         my_location_find(position.coords.latitude, position.coords.longitude);
     });
 });
-
-
