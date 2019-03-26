@@ -35,46 +35,36 @@
   <div class="map_wrap">
     <div id="map"></div>
 
-    <div class="color_box search_d"></div>
-
-    <!-- Food Search -->
-    <div class="food_select">
-      <input class="form-control" type="text" placeholder="#오늘 뭐 먹지...?">
-    </div>
-    <!-- 시 샐렉트 -->
-    <div class="search_one">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">#시</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-    </div>
-    <!-- 동 샐렉트 -->
-    <div class="search_two">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">#동</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-    </div>
     <div id="menu_wrap" class="bg_white">
       <div class="option">
+        <input class="form-control" type="text" placeholder="Default input">
+
+        <!-- 동 샐렉트 -->
+        <!-- <div class="search_two">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">위치</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div> -->
         <div>
           <form onsubmit="searchPlaces(); return false;">
-            키워드 : <input type="text" value="" id="keyword" size="15">
-            <button type="submit">검색하기</button>
+            <div class="input-group mb-3 food_input">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon1">=</button>
+              </div>
+              <input type="text" value="" id="keyword" size="15" class="form-control" placeholder="#오늘 뭐 먹지...?">
+            </div>
+
+
+
+
           </form>
         </div>
       </div>
