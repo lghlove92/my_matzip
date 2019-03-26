@@ -312,7 +312,10 @@ $(function () {
         }
     });
 
-
+    $(".form_location").click(function() {
+        // sample3_execDaumPostcode();
+        $(".address_tracking").show();
+    });
 
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
