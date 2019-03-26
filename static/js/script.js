@@ -39,6 +39,15 @@ var infowindow = new daum.maps.InfoWindow({zIndex:1});
  * @param {Number} longitude 경도
  */
 function my_location_find(latitude, longitude) {
+
+    var latlng = new daum.maps.LatLng(latitude, longitude);
+    searchAddrFromCoords(latlng, function (result, status) {
+        if (status === daum.maps.services.Status.OK) {
+            console.log(result[0].address_name); // 읍,면,동까지의 주소
+            map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
+        }
+    });
+
   var latlng = new daum.maps.LatLng(latitude, longitude);
   searchAddrFromCoords(latlng, function(result, status) {
     if (status === daum.maps.services.Status.OK) {
@@ -130,9 +139,11 @@ function displayPlaces(places) {
 }
 
 function searchAddrFromCoords(coords, callback) {
-  // 좌표로 행정동 주소 정보를 요청합니다
-  geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
 }
+
+$(function () {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
@@ -235,24 +246,24 @@ function removeAllChildNods(el) {
 
 $(function() {
 
-  // 현재 위치에 위도, 경도를 가져오는 로직
-  navigator.geolocation.getCurrentPosition(function(position) {
-    console.log(position.coords.latitude, position.coords.longitude);
-    my_location_find(position.coords.latitude, position.coords.longitude);
-  });
+    // 현재 위치에 위도, 경도를 가져오는 로직
+    navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+        my_location_find(position.coords.latitude, position.coords.longitude);
+    });
 });
 
 // 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
-map.setZoomable(false);   
+map.setZoomable(false);
 
 // ctrl키를 누를때
-$(document).keydown(function(e) {
-  if(e.keyCode == 17) {
-    map.setZoomable(true);  
-  } 
+$(document).keydown(function (e) {
+    if (e.keyCode == 17) {
+        map.setZoomable(true);
+    }
 })
 // ctrl키를 땔때
-$(document).keyup(function(e) {
+$(document).keyup(function (e) {
     map.setZoomable(false);
 })
 
