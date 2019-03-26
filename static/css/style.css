@@ -1,14 +1,53 @@
 html, body { 
     height: 100%; 
 }
+/* Map option */
 #map{
     width: 100%;
     height: calc(100vh - 56px);   /* calc 계산하다 약자, 전체 높이에서 navbar 높이를 뺀다. */
     position:relative;
     overflow:hidden;
+    z-index: 500;
+    display: inline-block;
 }
-
-
+/* 위치 확인용 컬러박스 (나중에 삭제) */
 .color_box{
     background-color: gray;
+}
+
+.search_d{
+    position: absolute;
+    display: inline-block;
+    top: 100px;
+    left: 50px;
+    width: 300px;
+    height: 200px;
+    z-index: 1000;
+}
+.food_select{
+    position: absolute;
+    display: inline-block;
+    top: 310px;
+    left: 50px;
+    width: 300px;
+    height: 50px;
+    z-index: 1000;
+}
+.search_one{
+    position: absolute;
+    display: inline-block;
+    top: 350px;
+    left: 50px;
+    width: 300px;
+    height: 50px;
+    z-index: 1000;
+}
+.search_two{
+    position: absolute;
+    display: inline-block;
+    top: 390px;
+    left: 50px;
+    width: 300px;
+    height: 50px;
+    z-index: 1000;
 }
