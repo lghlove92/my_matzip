@@ -1,28 +1,32 @@
 /* Common */
-html, body {
+html,
+body {
     height: 100%;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
 }
-h1, h2, h3, h4, h5, h6, p {
+h1,h2,h3,h4,h5,h6,p {
     margin-bottom: 0;
 }
 /*********************************************/
 /* Map option */
-#map{
+#map {
     width: 100%;
     height: calc(100vh - 56px);
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
 }
-.map_wrap, .map_wrap * {
+.map_wrap,
+.map_wrap * {
     margin: 0;
     padding: 0;
-    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
     font-size: 12px;
 }
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+.map_wrap a,
+.map_wrap a:hover,
+.map_wrap a:active {
     color: #000;
     text-decoration: none;
 }
@@ -46,34 +50,47 @@ h1, h2, h3, h4, h5, h6, p {
     border-radius: 0px;
 }
 /*********************************************/
-    .address_tracking{
-        overflow-y: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 3;
-        width: 350px;
-        margin: 47px 0 0px 0px;
-        padding: 5px;
-        font-size: 12px;
-        background: white;
-        border-radius: 0px;
-        display: none;
-    }
-    .address_tracking{
-        text-align: left;
-    }
+.address_tracking {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 350px;
+    margin: 0px 0 0px 0px;
+    padding: 5px;
+    font-size: 12px;
+    background: white;
+    border-radius: 0px;
+    display: none;
+}
+.address_tracking {
+    text-align: left;
+}
+#keyword{
+    width: 100%;
+    border-radius: .25rem;
+    display: block;
+}
+#button-addon2{
+    display: inline-block;
+    position: absolute;
+    border: none;
+    right: 10px;
+    top: 10px;
+    
+}
 /*********************************************/
 .bg_white {
-    background: #FFF;
+    background: #fff;
 }
 #menu_wrap hr {
     display: block;
     height: 1px;
     margin: 3px 0;
     border: 0;
-    border-top: 2px solid #5F5F5F;
+    border-top: 2px solid #5f5f5f;
 }
 #menu_wrap .option {
     text-align: center;
@@ -95,7 +112,8 @@ h1, h2, h3, h4, h5, h6, p {
     display: block;
     margin-top: 4px;
 }
-#placesList .item h5, #placesList .item .info {
+#placesList .item h5,
+#placesList .item .info {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -104,11 +122,12 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 10px 0 10px 55px;
 }
 #placesList .info .gray {
-    color: #8A8A8A;
+    color: #8a8a8a;
 }
 #placesList .info .jibun {
     padding-left: 26px;
-    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+        no-repeat;
 }
 #placesList .info .tel {
     color: #009900;
@@ -119,7 +138,8 @@ h1, h2, h3, h4, h5, h6, p {
     width: 36px;
     height: 37px;
     margin: 10px 0 0 10px;
-    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+        no-repeat;
 }
 #placesList .item .marker_1 {
     background-position: 0 -10px;
@@ -128,7 +148,7 @@ h1, h2, h3, h4, h5, h6, p {
     background-position: 0 -56px;
 }
 #placesList .item .marker_3 {
-    background-position: 0 -102px
+    background-position: 0 -102px;
 }
 #placesList .item .marker_4 {
     background-position: 0 -148px;
@@ -179,8 +199,8 @@ h1, h2, h3, h4, h5, h6, p {
     cursor: default;
     color: #777;
 }
-.food_input{
-    margin-top:10px;
+.food_input {
+    margin-top: 10px;
 }
 #overlay {
     position: absolute;
@@ -190,15 +210,45 @@ h1, h2, h3, h4, h5, h6, p {
     height: 100%;
     z-index: 1000;
     display: none;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
-#overlay p{
+#overlay p {
     position: absolute;
     top: 50%;
     left: 39%;
     font-size: 40px;
     color: white;
-    transform: translate(-28%,-55%);
+    transform: translate(-28%, -55%);
+}
+.infowindow {
+    padding:5px;
+    text-align: center;
+    z-index:1;
+    display:block;
+    width:150px;
+    font-size: 1em;
+    margin: 0;
+    -webkit-text-stroke: 1px gray;
+}
+.custom_overlay_wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.custom_overlay_wrap * {padding: 0;margin: 0;}
+.custom_overlay_wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.custom_overlay_wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.custom_overlay_wrap .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.custom_overlay_wrap .info .custom_overlay_close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.custom_overlay_wrap .info .custom_overlay_close:hover {cursor: pointer;}
+.custom_overlay_wrap .info .body {position: relative;overflow: hidden;}
+.custom_overlay_wrap .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.custom_overlay_wrap .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.custom_overlay_wrap .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.custom_overlay_wrap .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.custom_overlay_wrap .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.custom_overlay_wrap .info .link {color: #5085BB;}
+.popup_foot {
+    display: none;
+}
+.cancel_address_tracking {
+    width: 100%;
 }
 
 /*
@@ -207,7 +257,7 @@ h1, h2, h3, h4, h5, h6, p {
 .detail_content {
     min-height: calc(100vh - 56px);
     padding-bottom: 40px;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
 }
 .detail_wrap {
     width: 100%;
@@ -216,8 +266,8 @@ h1, h2, h3, h4, h5, h6, p {
     padding-top: 15px;
 }
 .detail_section {
-    background-color: #FFF;
-    border: 1px solid #EBEBEB;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
 }
 .detail_section + .detail_section {
     margin-top: 10px;
@@ -231,7 +281,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: calc(100% - 60px);
     margin: -60px 30px 0;
     padding-top: 30px;
-    background-color: #FFF;
+    background-color: #fff;
     -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
     -ms-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
@@ -256,7 +306,8 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0 auto;
     font-size: 1px;
     line-height: 0;
-    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png)
+        no-repeat;
     background-repeat: no-repeat;
     text-indent: -9999px;
 }
@@ -290,7 +341,8 @@ h1, h2, h3, h4, h5, h6, p {
     height: 18px;
     font-size: 1px;
     line-height: 0;
-    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png)
+        no-repeat;
     background-repeat: no-repeat;
     text-indent: -9999px;
     background-position: -40px -30px;
@@ -309,7 +361,8 @@ h1, h2, h3, h4, h5, h6, p {
     height: 15px;
     font-size: 1px;
     line-height: 0;
-    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png) no-repeat;
+    background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_190102.png)
+        no-repeat;
     background-repeat: no-repeat;
     text-indent: -9999px;
     background-position: -100px -30px;
