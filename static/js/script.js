@@ -122,6 +122,7 @@ function displayPlaces(places) {
             });
             // 마커를 클릭했을때 닫기가 가능한 커스텀오버레이 뜨게하기
             daum.maps.event.addListener(marker, 'click', function () {
+
                 console.log(place);
                 $(".custom_overlay_close").click();
                 var content = '<div class="custom_overlay_wrap">' + 
@@ -162,6 +163,12 @@ function displayPlaces(places) {
                     }
                     location.href = "detail.html" + query;
                 });
+
+                var query = '?';
+                for (var key in place) {
+                    query = query + key + '=' + place[key] + '&';
+                }
+                location.href = "detail.html" + query;
             });
             
             itemEl.onclick = function () {
@@ -340,10 +347,10 @@ $(function () {
         map.setZoomable(false);
     })
     var timeout;
-    $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+    $(".map_wrap").on("mousewheel DOMMouseScroll", function (e) {
 
         e.preventDefault();
-        
+
         // ctrl누를때 text_p 나오게하기
         if (e.ctrlKey == false) {
             // document.getElementById("overlay").style.display = "block";
@@ -351,7 +358,7 @@ $(function () {
             // 1초뒤에 text_p 사라지게 하기
 
             clearTimeout(timeout); // 초기화시켜서 반복안되게하기
-            timeout=setTimeout(function() {
+            timeout = setTimeout(function () {
                 $("#overlay").fadeOut("slow");
                 // document.getElementById("overlay").style.display = "none";
             }, 1000);
