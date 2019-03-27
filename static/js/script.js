@@ -156,9 +156,9 @@ function displayPlaces(places) {
                 });
                 customOverlay.setVisible(true);
                 // 오버레이 안에 닫기버튼 누를시 오버레이 사라진다. 
-                $(".custom_overlay_close").on('click', function() {
+                $(".custom_overlay_close").on('click', function () {
                     customOverlay.setMap(null);
-                    daum.maps.event.addListener(marker, 'mouseover', hover);  
+                    daum.maps.event.addListener(marker, 'mouseover', hover);
                 });
                 // 오버레이 클릭시 detail.html 이동
                 $(".custom_overlay_wrap .body").on('click', function () {
