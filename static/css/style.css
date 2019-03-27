@@ -200,6 +200,16 @@ h1, h2, h3, h4, h5, h6, p {
     color: white;
     transform: translate(-28%,-55%);
 }
+.infowindow {
+    padding:5px;
+    text-align: center;
+    z-index:1;
+    display:block;
+    width:150px;
+    font-size: 1em;
+    margin: 0;
+    -webkit-text-stroke: 1px gray;
+}
 
 /*
     Detail Page

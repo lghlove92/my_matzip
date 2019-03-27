@@ -127,8 +127,15 @@ function displayPlaces(places) {
                 }
                 location.href = "detail.html" + query;
             });
+            itemEl.onclick = function () {
+                var query = '?';
+                for (var key in place) {
+                  query = query + key + '=' + place[key] + '&';
+                }
+                location.href = "detail.html" + query;
+            };
             itemEl.onmouseover = function () {
-                displayInfowindow(marker, place);
+                displayInfowindow(marker, place.place_name);
             };
             itemEl.onmouseout = function () {
                 infowindow.close();
@@ -238,7 +245,7 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    var content = '<div class="infowindow">' + title + '</div>';
 
     infowindow.setContent(content);
     infowindow.open(map, marker);
@@ -280,8 +287,11 @@ function sample3_execDaumPostcode() {
     element_wrap.style.display = 'block';
 }
 
-// 추가한거
 $(function () {
+
+    /**
+     * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
+     * */
     $(document).keydown(function (e) {
         // ctrl 누를때 확대 축소기능 열기
         if (e.keyCode == 17) {
@@ -292,7 +302,6 @@ $(function () {
     $(document).keyup(function (e) {
         map.setZoomable(false);
     })
-
     var timeout;
     $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
 
@@ -312,10 +321,12 @@ $(function () {
         }
     });
 
+    
     $(".form_location").click(function() {
         // sample3_execDaumPostcode();
         $(".address_tracking").show();
     });
+
 
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
