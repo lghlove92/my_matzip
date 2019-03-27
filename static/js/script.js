@@ -116,15 +116,17 @@ function displayPlaces(places) {
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function (marker, place) {
-            daum.maps.event.addListener(marker, "mouseover", function () {
+            var hover = function () {
                 displayInfowindow(marker, place.place_name);
-            });
-            daum.maps.event.addListener(marker, "mouseout", function () {
+            }
+            daum.maps.event.addListener(marker, 'mouseover', hover);
+            daum.maps.event.addListener(marker, 'mouseout', function () {
                 infowindow.close();
             });
             // 마커를 클릭했을때 닫기가 가능한 커스텀오버레이 뜨게하기
             daum.maps.event.addListener(marker, 'click', function () {
-
+                infowindow.close();
+                daum.maps.event.removeListener(marker, 'mouseover', hover);
                 console.log(place);
                 $(".custom_overlay_close").click();
                 var content = '<div class="custom_overlay_wrap">' +
@@ -153,9 +155,10 @@ function displayPlaces(places) {
                     position: marker.getPosition()
                 });
                 customOverlay.setVisible(true);
-                // 오버레이 안에 닫기버튼 누를시 오버레이 사라진다.
+                // 오버레이 안에 닫기버튼 누를시 오버레이 사라진다. 
                 $(".custom_overlay_close").on('click', function () {
                     customOverlay.setMap(null);
+                    daum.maps.event.addListener(marker, 'mouseover', hover);
                 });
                 // 오버레이 클릭시 detail.html 이동
                 $(".custom_overlay_wrap .body").on('click', function () {
