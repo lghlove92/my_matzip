@@ -156,7 +156,7 @@ function displayPlaces(places) {
                     customOverlay.setMap(null);     
                 });
                 // 오버레이 클릭시 detail.html 이동
-                $(".custom_overlay_wrap").on('click', function() {
+                $(".custom_overlay_wrap .body").on('click', function() {
                     var query = '?';
                     for (var key in place) {
                     query = query + key + '=' + place[key] + '&';
@@ -164,11 +164,7 @@ function displayPlaces(places) {
                     location.href = "detail.html" + query;
                 });
 
-                var query = '?';
-                for (var key in place) {
-                    query = query + key + '=' + place[key] + '&';
-                }
-                location.href = "detail.html" + query;
+              
             });
             
             itemEl.onclick = function () {
