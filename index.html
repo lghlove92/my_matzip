@@ -19,49 +19,45 @@
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        </div>
-        <button type="button" class="btn btn-outline-warning login_signin">Login</button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
+        <button type="button" class="btn btn-outline-warning login_signin">
+            Login
+        </button>
     </nav>
     <div class="map_wrap">
         <div id="map"></div>
         <div id="overlay">
             <p>지도를 확대/축소하려면 Ctrl을 누른 채 스크롤하세요.</p>
         </div>
-
         <div id="menu_wrap" class="bg_white">
             <div class="option">
-                <input class="form-control form_location" type="text" placeholder="예) 판교역로 235, 분당 주공, 삼평동 681"
-                    onclick="sample3_execDaumPostcode()">
+                <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
+                    onclick="sample3_execDaumPostcode()" />
                 <div>
                     <!-- Address tracking = display:none -->
                     <div class="address_tracking">
-                        <!-- <div class="list-group tracking_list">
-              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
-                aria-disabled="true">Vestibulum at eros</a>
-            </div> -->
+                        <button type="button" class="btn btn-outline-light cancel_address_tracking">
+                            검색 종료
+                        </button>
                         <div id="wrap"></div>
                     </div>
                     <!-- Address tracking = display:none -->
                     <form onsubmit="searchPlaces(); return false;">
                         <div class="input-group mb-3 food_input">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon1">=</button>
-                            </div>
+                            <div class="input-group-prepend"></div>
                             <input type="text" value="" id="keyword" size="15" class="form-control"
-                                placeholder="#오늘 뭐 먹지...?">
+                                placeholder="#오늘 뭐 먹지...?" />
+                            <button type="submit" id="button-addon2">
+                                <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <hr>
+            <hr />
             <ul id="placesList"></ul>
             <div id="pagination"></div>
         </div>
-
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
