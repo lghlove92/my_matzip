@@ -123,7 +123,7 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'click', function () {
                 var query = '?';
                 for (var key in place) {
-                  query = query + key + '=' + place[key] + '&';
+                    query = query + key + '=' + place[key] + '&';
                 }
                 location.href = "detail.html" + query;
             });
@@ -294,10 +294,10 @@ $(function () {
     })
 
     var timeout;
-    $(".map_wrap").on("mousewheel DOMMouseScroll", function(e) {
+    $(".map_wrap").on("mousewheel DOMMouseScroll", function (e) {
 
         e.preventDefault();
-        
+
         // ctrl누를때 text_p 나오게하기
         if (e.ctrlKey == false) {
             // document.getElementById("overlay").style.display = "block";
@@ -305,7 +305,7 @@ $(function () {
             // 1초뒤에 text_p 사라지게 하기
 
             clearTimeout(timeout); // 초기화시켜서 반복안되게하기
-            timeout=setTimeout(function() {
+            timeout = setTimeout(function () {
                 $("#overlay").fadeOut("slow");
                 // document.getElementById("overlay").style.display = "none";
             }, 1000);
