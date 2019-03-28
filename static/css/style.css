@@ -1,8 +1,10 @@
 /* Common */
 /* 삭제 가능 */
 .greeting_slide{
+    width: 100%;
     background-color: gray;
-    height: calc(100vh - 56px);
+    height: calc(100vh);
+    
 }
 
 html,
@@ -17,6 +19,13 @@ h1,h2,h3,h4,h5,h6,p {
 }
 /*********************************************/
 /* Map option */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 #map {
     width: 100%;
     height: calc(100vh - 56px);

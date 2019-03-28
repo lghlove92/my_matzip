@@ -6,69 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>My MatZip</title>
-    <link rel="stylesheet" href="./static/css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./static/css/fullpage.css"/> -->
+    
+
 </head>
 
 <body>
     <!-- nav bar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">My matzip</a>
-        <button type="button" class="btn btn-outline-warning login_signin">
-            Login
-        </button>
-    </nav>
-    <div class="greeting_slide">
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">My matzip</a>
+            <button type="button" class="btn btn-outline-warning login_signin">
+                Login
+            </button>
+        </nav>
+    </header>
+    
+    <div id="fullpage">
+        <div class="section"> 
+            <div class="greeting_slide">
 
-    </div>
-    <div class="map_wrap">
-        <div id="map"></div>
-        <div id="overlay">
-            <p>지도를 확대/축소하려면 Ctrl을 누른 채 스크롤하세요.</p>
+            </div>
         </div>
-        <div id="menu_wrap" class="bg_white">
-            <div class="option">
-                <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
-                    onclick="sample3_execDaumPostcode()" />
-                <div>
-                    <!-- Address tracking = display:none -->
-                    <div class="address_tracking">
-                        <button type="button" class="btn btn-outline-light cancel_address_tracking">
-                            검색 종료
-                        </button>
-                        <div id="wrap"></div>
-                    </div>
-                    <!-- Address tracking = display:none -->
-                    <form onsubmit="searchPlaces(); return false;">
-                        <div class="input-group mb-3 food_input">
-                            <div class="input-group-prepend"></div>
-                            <input type="text" value="" id="keyword" size="15" class="form-control"
-                                placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
-                            <button type="submit" id="button-addon2">
-                                <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
-                            </button>
+	    <div class="section">  
+            <div class="map_wrap">
+                <div id="map"></div>
+                <div id="overlay">
+                    <p>지도를 확대/축소하려면 Ctrl을 누른 채 스크롤하세요.</p>
+                </div>
+                <div id="menu_wrap" class="bg_white">
+                    <div class="option">
+                        <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
+                            onclick="sample3_execDaumPostcode()" />
+                        <div>
+                            <!-- Address tracking = display:none -->
+                            <div class="address_tracking">
+                                <button type="button" class="btn btn-outline-light cancel_address_tracking">
+                                    검색 종료
+                                </button>
+                                <div id="wrap"></div>
+                            </div>
+                            <!-- Address tracking = display:none -->
+                            <form onsubmit="searchPlaces(); return false;">
+                                <div class="input-group mb-3 food_input">
+                                    <div class="input-group-prepend"></div>
+                                    <input type="text" value="" id="keyword" size="15" class="form-control"
+                                        placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
+                                    <button type="submit" id="button-addon2">
+                                        <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    <hr />
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
                 </div>
             </div>
-            <hr />
-            <ul id="placesList"></ul>
-            <div id="pagination"></div>
         </div>
     </div>
+
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
     <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.extensions.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.js"></script> -->
+    <!-- <script type="text/javascript" src="./static/js/fullpage.js"></script> -->
     <script src="./static/js/script.js"></script>
+    
+    
 </body>
 
 </html>
