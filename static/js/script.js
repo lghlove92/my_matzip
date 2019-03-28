@@ -406,22 +406,9 @@ function sample3_execDaumPostcode() {
 }
 
 $(function () {
-
-<<<<<<< HEAD
-       $('#fullpage').fullpage({
-           //options here
-           autoScrolling:true,
-           scrollHorizontally: true,
-            scrollBar: true,
-       });
-   
-       //methods
-       $.fn.fullpage.setAllowScrolling(false);
-=======
     storage_load();
     query_load();
 
->>>>>>> 6518708282a8a7af4dd054e6ecf80cbe6d47f8aa
     /**
      * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
      * */
