@@ -406,6 +406,7 @@ function sample3_execDaumPostcode() {
 }
 
 $(function () {
+
     storage_load();
     query_load();
 

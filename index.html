@@ -29,7 +29,7 @@
 
             </div>
         </div>
-	    <div class="section">  
+        <div class="section">  
             <div class="map_wrap">
                 <div id="map"></div>
                 <div id="overlay">
@@ -39,36 +39,29 @@
                     <div class="option">
                         <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
                             onclick="sample3_execDaumPostcode()" />
-                        <div>
-                            <!-- Address tracking = display:none -->
-                            <div class="address_tracking">
-                                <button type="button" class="btn btn-outline-light cancel_address_tracking">
-                                    검색 종료
+                        <form onsubmit="searchPlaces(); return false;">
+                            <div class="input-group mb-3 food_input">
+                                <button type="submit" id="button-addon2">
+                                    <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
                                 </button>
-                                <div id="wrap"></div>
+                                <input type="text" value="" id="keyword" size="15" class="form-control"
+                                    placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
                             </div>
-                            <!-- Address tracking = display:none -->
-                            <form onsubmit="searchPlaces(); return false;">
-                                <div class="input-group mb-3 food_input">
-                                    <div class="input-group-prepend"></div>
-                                    <input type="text" value="" id="keyword" size="15" class="form-control"
-                                        placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
-                                    <button type="submit" id="button-addon2">
-                                        <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
-                                    </button>
-                                </div>
-                            </form>
+                        </form>
+                        <div class="address_tracking">
+                            <button type="button" class="btn btn-outline-light cancel_address_tracking">
+                                검색 종료
+                            </button>
+                            <div id="wrap"></div>
                         </div>
                     </div>
-                    <hr />
-                    <ul id="placesList"></ul>
-                    <div id="pagination"></div>
                 </div>
+                <hr />
+                <ul id="placesList"></ul>
+                <div id="pagination"></div>
             </div>
         </div>
     </div>
-
-    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
