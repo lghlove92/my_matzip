@@ -39,18 +39,18 @@ var infowindow = new daum.maps.InfoWindow({ zIndex: 1 });
 
 /**
  * 현재 위치에 위도, 경도를 받아서 주소를 추출하고 지도를 현재 위치로 이동시킴
- * @param {Number} latitude 위도
- * @param {Number} longitude 경도
  */
-function my_location_find(latitude, longitude) {
-    var latlng = new daum.maps.LatLng(latitude, longitude);
-    searchAddrFromCoords(latlng, function (result, status) {
-        if (status === daum.maps.services.Status.OK) {
-            map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
-            map.setLevel(3);
-            $(".form_location").val(result[0].address_name); // 읍,면,동까지의 주소를 주소 input에 넣음
-            $("#keyword").focus();
-        }
+function my_location_find() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var latlng = new daum.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        searchAddrFromCoords(latlng, function (result, status) {
+            if (status === daum.maps.services.Status.OK) {
+                map.setCenter(new daum.maps.LatLng(position.coords.latitude, position.coords.longitude)); // 현재 위치로 지도 이동
+                map.setLevel(3);
+                $(".form_location").val(result[0].address_name); // 읍,면,동까지의 주소를 주소 input에 넣음
+                $("#keyword").focus();
+            }
+        });
     });
 }
 
@@ -64,9 +64,7 @@ function storage_load() {
         local_places = local_data;
         displayPlaces(local_data);
     } else {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            my_location_find(position.coords.latitude, position.coords.longitude);
-        });
+        my_location_find();
     }
 }
 
@@ -134,7 +132,6 @@ function placesSearchCB(data, status, pagination) {
             for (var i in data) {
                 for (var j in local_places) {
                     if (local_places[j]["id"] == data[i]["id"]) {
-                        console.log(data[i], local_places[j]);
                         data[i]['reviews'] = local_places[j]['reviews'];
                     }
                 }
@@ -410,6 +407,7 @@ function sample3_execDaumPostcode() {
             var addr = data.sido + " " + data.sigungu + " " + data.bname; // 주소 변수
             $(".form_location").val(addr);
             $(".address_tracking").hide();
+            $("#keyword").focus();
         },
         // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
         onresize: function (size) {
@@ -425,9 +423,13 @@ function sample3_execDaumPostcode() {
 
 $(function () {
 
-    storage_load();
-    query_load();
-    
+    var referrer =  document.referrer;
+    var front_referrer = referrer.split(".html?");
+    var before_page = front_referrer[0].split("/");
+    if (before_page[before_page.length - 1] == "detail") {
+        query_load();
+    }
+
     /**
      * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
      * */
@@ -464,10 +466,23 @@ $(function () {
     $(".form_location").click(function () {
         sample3_execDaumPostcode();
         $(".address_tracking").show();
+        // 검색 결과 목록에 추가된 항목들을 제거합니다
+        var listEl = document.getElementById("placesList");
+        removeAllChildNods(listEl);
+        // 지도에 표시되고 있는 마커를 제거합니다
+        removeMarker();
     });
 
     // 주소 검색창을 닫는 버튼및 기능
     $(".cancel_address_tracking").click(function () {
         $(".address_tracking").hide();
+    });
+
+    $(".my_matzip_btn").click(function () {
+        storage_load();
+    });
+    
+    $(".navbar-brand").click(function () {
+        my_location_find();
     });
 });

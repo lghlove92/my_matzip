@@ -15,10 +15,15 @@
 <body>
     <!-- nav bar -->
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">My matzip</a>
-        <button type="button" class="btn btn-outline-warning login_signin">
-            Login
-        </button>
+        <a class="navbar-brand" href="javascript:void(0)">My matzip</a>
+        <div class="btn_wrap">
+            <button type="button" class="btn btn-outline-info my_matzip_btn">
+                내 맛집
+            </button>
+            <button type="button" class="btn btn-outline-warning login_signin">
+                Login
+            </button>
+        </div>
     </nav>
     
     <div class="map_wrap">
@@ -29,7 +34,7 @@
         <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
-                    onclick="sample3_execDaumPostcode()" />
+                    onclick="sample3_execDaumPostcode()" readonly/>
                 <form onsubmit="searchPlaces(); return false;">
                     <div class="input-group mb-3 food_input">
                         <button type="submit" id="button-addon2">
