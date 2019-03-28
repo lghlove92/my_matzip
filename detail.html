@@ -26,7 +26,11 @@
   <div class="detail_content">
     <div class="detail_wrap">
       <section class="detail_section">
-        <div class="top_bg"></div>
+        <div class="top_bg">
+          <div class="top_bg_button">
+            <a href='index.html?' class="btn btn-outline-light back_to_result">뒤로가기</a>
+          </div>
+        </div>
         <div class="title_wrap">
           <h1 id="place_name" class="text-center font-weight-bold"></h1>
           <p id="category_name" class="category_name text-center mt-2"></p>
@@ -51,12 +55,48 @@
           </ul>
         </div>
       </section>
+      <section class="detail_section">
+        <div class="detail_info">
+          <form id="review_form">
+            <h6 class="mb-4">평가하기</h6>
+            <div class="review_wrap">
+              <div class="grade_wrap btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn grade_btn good">
+                  <input type="radio" name="grade" id="grade_good" autocomplete="off" required value="good">
+                  <img src="./static/img/good.png" alt="good">
+                  <span>최고에요!</span>
+                </label>
+                <label class="btn grade_btn soso">
+                  <input type="radio" name="grade" id="grade_soso" autocomplete="off" required value="soso">
+                  <img src="./static/img/soso.png" alt="soso">
+                  <span>보통이에요!</span>
+                </label>
+                <label class="btn grade_btn bad">
+                  <input type="radio" name="grade" id="grade_bad" autocomplete="off" required value="bad">
+                  <img src="./static/img/bad.png" alt="bad">
+                  <span>별로에요!</span>
+                </label>
+              </div>
+              <div class="form-group disadvantages mt-3">
+                <label for="disadvantages">단점</label>
+                <input type="text" class="form-control" id="disadvantages" placeholder="단점을 입력해주세요." required>
+              </div>
+              <div class="form-group advantages mt-3">
+                <label for="advantages">장점</label>
+                <input type="text" class="form-control" id="advantages" placeholder="장점을 입력해주세요." required>
+              </div>
+              <div class="review_submit_wrap text-right">
+                <button type="submit" class="btn btn-primary">등록</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
   </div>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
