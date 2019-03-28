@@ -51,6 +51,15 @@ function my_location_find(latitude, longitude) {
             $("#keyword").focus();
         }
     });
+
+    var latlng = new daum.maps.LatLng(latitude, longitude);
+    searchAddrFromCoords(latlng, function (result, status) {
+        if (status === daum.maps.services.Status.OK) {
+            console.log(result[0].address_name); // 읍,면,동까지의 주소
+            map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
+            map.setLevel(3);
+        }
+    });
 }
 
 /**
@@ -98,32 +107,8 @@ function searchPlaces() {
     }
     // 장소검색 객체를 통해 키워드로 장소검색을 요청 (검색 결과 값 넣어서 같이 검색)
     ps.keywordSearch(addrData + " " + keyword, placesSearchCB);
+    3;
 }
-
-function query_load() {
-    var query = window.location.search.substr(1); // url에 있는 쿼리값을 가져온다.
-    if (query != "") {
-        var addrData = "";
-        var keyword = "";
-        var get_url_data = query.split("&"); // '&' 기준으로 나누어 배열로 저장
-        for (var i in get_url_data) { // 나눈값들을 하나 씩 돌리며 진행
-            if (get_url_data[i] !== "") { // 값이 있을 때만 실행
-                var split_data = get_url_data[i].split("="); // 값을 '=' 기준으로 나누어서 배열에 저장
-                var name = split_data[0]; // key를 'name' 변수에 저장
-                var value = decodeURIComponent(split_data[1]); // 값을 decode해서 'value' 변수에 저장
-                if (name == "addr") {
-                    $(".form_location").val(value);
-                    addrData = value;
-                } else if (name == "food") {
-                    $("#keyword").val(value);
-                    keyword = value;
-                }
-            }
-        }
-        ps.keywordSearch(addrData + " " + keyword, placesSearchCB);
-    }
-}
-
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
@@ -234,25 +219,20 @@ function displayPlaces(places) {
                 // 오버레이 클릭시 detail.html 이동
                 $(".custom_overlay_wrap .body").on('click', function () {
                     var query = '?';
-                    var keyword = document.getElementById("keyword").value;
-                    var addrData = $(".form_location").val();
                     for (var key in place) {
                         query = query + key + '=' + place[key] + '&';
                     }
-                    location.href = "detail.html" + query + "addr=" + addrData + "&food=" + keyword;
+                    location.href = "detail.html" + query;
                 });
 
             });
 
             itemEl.onclick = function () {
-                var keyword = document.getElementById("keyword").value;
-                var addrData = $(".form_location").val();
                 var query = '?';
                 for (var key in place) {
                     query = query + key + '=' + place[key] + '&';
                 }
-                location.href = "detail.html" + query + "addr=" + addrData + "&food=" + keyword;
-                s
+                location.href = "detail.html" + query;
             };
             itemEl.onmouseover = function () {
                 displayInfowindow(marker, place.place_name);
@@ -427,6 +407,16 @@ function sample3_execDaumPostcode() {
 
 $(function () {
 
+    $('#fullpage').fullpage({
+        //options here
+        autoScrolling:true,
+        scrollHorizontally: true,
+        scrollBar: true,
+    });
+    
+    //methods
+    $.fn.fullpage.setAllowScrolling(false);
+    
     storage_load();
     query_load();
 
