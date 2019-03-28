@@ -47,6 +47,12 @@ function query_load() {
                     id = value;
                 } else if (name == "reviews") { // key가 'reviews' 일 때만 실행
                     storage_load(id);
+                } else if (name == "addr") {
+                    var addr = $(".back_to_result").attr("href");
+                    $(".back_to_result").attr("href", addr + "addr=" + value);
+                } else if (name == "food") {
+                    var food = $(".back_to_result").attr("href");
+                    $(".back_to_result").attr("href", food + "&food=" + value);
                 } else { // key가 'id'가 아니라면
                     $("#" + name).text(value); // 각 key가 id인 요소에 값들을 넣어줌
                 }
@@ -82,7 +88,7 @@ $(function () {
     query_load();
 
     // 등록(수정)버튼을 누르면 실행
-    $("#review_form").submit(function(e) {
+    $("#review_form").submit(function (e) {
         e.preventDefault(); // 기존 이벤트를 막는다.
 
         var data = {}; //data를 담을 빈 객체 생성
@@ -90,7 +96,7 @@ $(function () {
         if (local_data != null) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터가 있으면 실행
             data = JSON.parse(local_data); // string으로 되어있는 데이터를 json으로 바꿔서 data 변수에 넣어줌(data가 있으면 그 뒤에 넣기 위한 로직)
         }
-        
+
         if (!place_data.hasOwnProperty("reviews")) { // 위에 정의한 지금 현재 플레이스에 대한 json 데이터에 "reviews" 키가 없으면
             place_data["reviews"] = {}; // "reviews" 키를 만들고 객채로 생성
         }
@@ -120,5 +126,4 @@ $(function () {
 
         $(".review_submit_wrap > button").text("수정"); // 수정이 되었으니 등록 버튼을 수정 버튼으로 이름 변경
     });
-
 });

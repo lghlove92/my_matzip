@@ -1,4 +1,10 @@
 /* Common */
+/* 삭제 가능 */
+.greeting_slide{
+    background-color: gray;
+    height: calc(100vh - 56px);
+}
+
 html,
 body {
     height: 100%;

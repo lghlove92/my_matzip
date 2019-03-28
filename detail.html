@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Detail</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./static/css/style.css" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./static/css/style.css" />
 </head>
+
 <body>
     <!-- nav bar -->
     <nav class="navbar navbar-dark bg-dark">
@@ -18,87 +20,89 @@
         </button>
     </nav>
 
-    <div class="detail_content">
-        <div class="detail_wrap">
-            <section class="detail_section">
-                <div class="top_bg">
-                    <div class="top_bg_button">
-                        <a href='#' class="btn btn-outline-light" onclick="history.back(); return false">뒤로가기</a>
-                    </div>
-                </div>
-                <div class="title_wrap">
-                    <h1 id="place_name" class="text-center font-weight-bold"></h1>
-                    <p id="category_name" class="category_name text-center mt-2"></p>
-                    <div class="btn_wrap d-flex justify-content-center">
-                        <a href="" id="storemap" target="_blank">
-                            <span class="ico_comm ico_storemap"></span>지도
-                        </a>
-                        <a href="" id="route" target="_blank">
-                            <span class="ico_comm ico_route"></span>길찾기
-                        </a>
-                        <a href="" id="roadmap" target="_blank">
-                            <span class="ico_comm ico_roadmap"></span>로드뷰
-                        </a>
-                    </div>
-                </div>
-                <div class="detail_info">
-                    <h6 class="mb-4">상세정보</h6>
-                    <ul>
-                        <li class="road_address_name" id="road_address_name"></li>
-                        <li class="address_name">지번 : <span id="address_name"></span></li>
-                        <li class="phone mt-2" id="phone"></li>
-                    </ul>
-                </div>
-            </section>
-            <section class="detail_section">
-                <div class="detail_info">
-                    <form id="review_form">
-                        <h6 class="mb-4">평가하기</h6>
-                        <div class="review_wrap">
-                            <div class="grade_wrap btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn grade_btn good">
-                                    <input type="radio" name="grade" id="grade_good" autocomplete="off" required value="good">
-                                    <img src="./static/img/good.png" alt="good">
-                                    <span>최고에요!</span>
-                                </label>
-                                <label class="btn grade_btn soso">
-                                    <input type="radio" name="grade" id="grade_soso" autocomplete="off" required value="soso">
-                                    <img src="./static/img/soso.png" alt="soso">
-                                    <span>보통이에요!</span>
-                                </label>
-                                <label class="btn grade_btn bad">
-                                    <input type="radio" name="grade" id="grade_bad" autocomplete="off" required value="bad">
-                                    <img src="./static/img/bad.png" alt="bad">
-                                    <span>별로에요!</span>
-                                </label>
-                            </div>
-                            <div class="form-group disadvantages mt-3">
-                                <label for="disadvantages">단점</label>
-                                <input type="text" class="form-control" id="disadvantages" placeholder="단점을 입력해주세요." required>
-                            </div>
-                            <div class="form-group advantages mt-3">
-                                <label for="advantages">장점</label>
-                                <input type="text" class="form-control" id="advantages" placeholder="장점을 입력해주세요." required>
-                            </div>
-                            <div class="review_submit_wrap text-right">
-                                <button type="submit" class="btn btn-primary">등록</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </section>
+  <div class="detail_content">
+    <div class="detail_wrap">
+      <section class="detail_section">
+        <div class="top_bg">
+          <div class="top_bg_button">
+            <a href='index.html?' class="btn btn-outline-light back_to_result">뒤로가기</a>
+          </div>
         </div>
+        <div class="title_wrap">
+          <h1 id="place_name" class="text-center font-weight-bold"></h1>
+          <p id="category_name" class="category_name text-center mt-2"></p>
+          <div class="btn_wrap d-flex justify-content-center">
+            <a href="" id="storemap" target="_blank">
+              <span class="ico_comm ico_storemap"></span>지도
+            </a>
+            <a href="" id="route" target="_blank">
+              <span class="ico_comm ico_route"></span>길찾기
+            </a>
+            <a href="" id="roadmap" target="_blank">
+              <span class="ico_comm ico_roadmap"></span>로드뷰
+            </a>
+          </div>
+        </div>
+        <div class="detail_info">
+          <h6 class="mb-4">상세정보</h6>
+          <ul>
+            <li class="road_address_name" id="road_address_name"></li>
+            <li class="address_name">지번 : <span id="address_name"></span></li>
+            <li class="phone mt-2" id="phone"></li>
+          </ul>
+        </div>
+      </section>
+      <section class="detail_section">
+        <div class="detail_info">
+          <form id="review_form">
+            <h6 class="mb-4">평가하기</h6>
+            <div class="review_wrap">
+              <div class="grade_wrap btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn grade_btn good">
+                  <input type="radio" name="grade" id="grade_good" autocomplete="off" required value="good">
+                  <img src="./static/img/good.png" alt="good">
+                  <span>최고에요!</span>
+                </label>
+                <label class="btn grade_btn soso">
+                  <input type="radio" name="grade" id="grade_soso" autocomplete="off" required value="soso">
+                  <img src="./static/img/soso.png" alt="soso">
+                  <span>보통이에요!</span>
+                </label>
+                <label class="btn grade_btn bad">
+                  <input type="radio" name="grade" id="grade_bad" autocomplete="off" required value="bad">
+                  <img src="./static/img/bad.png" alt="bad">
+                  <span>별로에요!</span>
+                </label>
+              </div>
+              <div class="form-group disadvantages mt-3">
+                <label for="disadvantages">단점</label>
+                <input type="text" class="form-control" id="disadvantages" placeholder="단점을 입력해주세요." required>
+              </div>
+              <div class="form-group advantages mt-3">
+                <label for="advantages">장점</label>
+                <input type="text" class="form-control" id="advantages" placeholder="장점을 입력해주세요." required>
+              </div>
+              <div class="review_submit_wrap text-right">
+                <button type="submit" class="btn btn-primary">등록</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
+  </div>
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
-    <script src="./static/js/detail.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=762ff56ed5364ccca93165fe1fb16ff0&libraries=services"></script>
+  <script src="./static/js/detail.js"></script>
 </body>
+
 </html>
