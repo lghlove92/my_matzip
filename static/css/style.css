@@ -86,7 +86,7 @@ h1,h2,h3,h4,h5,h6,p {
     border: none;
     right: 10px;
     top: 10px;
-    
+    background-color: transparent;
 }
 /*********************************************/
 .bg_white {
@@ -192,6 +192,18 @@ h1,h2,h3,h4,h5,h6,p {
 }
 #placesList .item .marker_15 {
     background-position: 0 -654px;
+}
+#placesList .item .marker_good1 {
+    background: url(../img/good.png) no-repeat;
+    background-size: contain;
+}
+#placesList .item .marker_soso1 {
+    background: url(../img/soso.png) no-repeat;
+    background-size: contain;
+}
+#placesList .item .marker_bad1 {
+    background: url(../img/bad.png) no-repeat;
+    background-size: contain;
 }
 #pagination {
     margin: 10px auto;

@@ -91,7 +91,7 @@ $(function () {
     $("#review_form").submit(function (e) {
         e.preventDefault(); // 기존 이벤트를 막는다.
 
-        var data = {}; //data를 담을 빈 객체 생성
+        var data = []; //data를 담을 빈 객체 생성
         var local_data = localStorage.getItem(storage_key); // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터을 가져온다.
         if (local_data != null) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터가 있으면 실행
             data = JSON.parse(local_data); // string으로 되어있는 데이터를 json으로 바꿔서 data 변수에 넣어줌(data가 있으면 그 뒤에 넣기 위한 로직)
@@ -118,7 +118,7 @@ $(function () {
         if (isId) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터에 현재 플레이스 데이터가 있으면
             data[index] = place_data; // 리뷰를 추가한 현재 새로운 데이터로 덮어 쓴다.
         } else { // 없다면
-            data[Object.keys(data).length] = place_data; // 새로운 데이터를 data 안에 추가
+            data.push(place_data); // 새로운 데이터를 data 안에 추가
         }
 
         var data_str = JSON.stringify(data); // 조합한 json data를 string으로 변경해서 변수에 넣음

@@ -1,3 +1,6 @@
+var storage_key = "matzip"; // 로컬 스토리지에 저장할 키
+var local_places = {};
+
 /***************************************************
  * 다음 지도 API 관련 로직
  */
@@ -50,11 +53,45 @@ function my_location_find(latitude, longitude) {
     });
 }
 
+/**
+ * 처음에 내가 리뷰를 등록한 마크가 뜨는 로직
+ ***/
+function storage_load() {
+    var local_data = localStorage.getItem(storage_key); // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터을 가져온다.
+    if (local_data != null) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터가 있으면 실행
+        local_data = JSON.parse(local_data); // string 데이터를 json으로 변경
+        for (var i in local_data) { // 변경된 json 데이터를 돌려주며 로직 실행
+            local_places[i] = local_data[i];
+            var placePosition = new daum.maps.LatLng(local_data[i]['y'], local_data[i]['x']),
+                marker = addLocalMarker(placePosition, local_data[i]["reviews"]["grade"]);
+        }
+        displayPlaces(local_data);
+    }
+}
+
+// 평가된 마커를 생성하고 지도 위에 평가된 마커를 표시하는 함수입니다
+function addLocalMarker(position, status) {
+    var imageSrc = "static/img/" + status + ".png", // 상태에 따른 마커 이미지 url
+        imageSize = new daum.maps.Size(58, 51), // 마커 이미지의 크기
+        markerImage = new daum.maps.MarkerImage(
+            imageSrc,
+            imageSize
+        ),
+        marker = new daum.maps.Marker({
+            position: position, // 마커의 위치
+            image: markerImage
+        });
+
+    marker.setMap(map); // 지도 위에 마커를 표출합니다
+    markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+    return marker;
+}
+
 // 키워드 검색을 요청하는 함수
 function searchPlaces() {
     var keyword = document.getElementById("keyword").value;
     var addrData = $(".form_location").val();
-    console.log(addrData);
     if (!keyword.replace(/^\s+|\s+$/g, "")) {
         alert("키워드를 입력해주세요!");
         return false;
@@ -93,6 +130,15 @@ function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
+        if (Object.keys(local_places).length > 0) {
+            for (var i in data) {
+                for (var j in local_places) {
+                    if (local_places[j]["id"] == data[i]["id"]) {
+                        data[i]['reviews'] = local_places[j]['reviews'];
+                    }
+                }
+            }
+        }
         displayPlaces(data);
 
         // 페이지 번호를 표출합니다
@@ -108,6 +154,7 @@ function placesSearchCB(data, status, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
+    console.log(places);
     var listEl = document.getElementById("placesList"),
         menuEl = document.getElementById("menu_wrap"),
         fragment = document.createDocumentFragment(),
@@ -118,12 +165,20 @@ function displayPlaces(places) {
     removeAllChildNods(listEl);
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-
     for (var i = 0; i < places.length; i++) {
+        var placePosition = new daum.maps.LatLng(places[i].y, places[i].x);
+        var marker;
+        var itemEl;
+        if (places[i].hasOwnProperty("reviews")) {
+            marker = addLocalMarker(placePosition, places[i]['reviews']['grade']);
+            itemEl = getListItem(places[i]['reviews']['grade'], places[i]);
+        } else {
+            marker = addMarker(placePosition, i);
+            itemEl = getListItem(i, places[i]);
+        }
+        
         // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i),
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+        
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -201,6 +256,7 @@ function displayPlaces(places) {
             };
             itemEl.onmouseover = function () {
                 displayInfowindow(marker, place.place_name);
+                map.setCenter(new daum.maps.LatLng(place.y, place.x));
             };
             itemEl.onmouseout = function () {
                 infowindow.close();
@@ -370,7 +426,10 @@ function sample3_execDaumPostcode() {
 }
 
 $(function () {
+
+    storage_load();
     query_load();
+
     /**
      * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
      * */
@@ -411,7 +470,6 @@ $(function () {
 
     // 현재 위치에 위도, 경도를 가져오는 로직
     navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords.latitude, position.coords.longitude);
         my_location_find(position.coords.latitude, position.coords.longitude);
     });
 });
