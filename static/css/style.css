@@ -244,6 +244,12 @@ h1,h2,h3,h4,h5,h6,p {
 .custom_overlay_wrap .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 .custom_overlay_wrap .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .custom_overlay_wrap .info .link {color: #5085BB;}
+.popup_foot {
+    display: none;
+}
+.cancel_address_tracking {
+    width: 100%;
+}
 
 /*
     Detail Page
@@ -361,12 +367,37 @@ h1,h2,h3,h4,h5,h6,p {
     text-indent: -9999px;
     background-position: -100px -30px;
 }
-/*********************************************/
-
-.popup_foot {
-    display: none;
-}
-.cancel_address_tracking {
+.detail_section .grade_wrap {
+    display: block;
     width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid #DDD;
+}
+.detail_section .grade_btn {
+    width: 115px;
+    opacity: 0.3;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+    cursor: pointer;
+    -ms-flex: none;
+    flex: none;
+}
+.detail_section .grade_btn:hover,
+.detail_section .grade_btn.active {
+    opacity: 1;
+}
+.detail_section .grade_btn img {
+    display: block;
+    width: 70px;
+    margin: 0 auto;
+}
+.detail_section .form-group input {
+    border-color: #DDD;
+    border-radius: 0;
+}
+.detail_section .review_submit_wrap .btn {
+    border-radius: 0;
 }
 /********** End of Detail Page ***********/
