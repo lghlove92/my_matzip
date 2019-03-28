@@ -51,15 +51,6 @@ function my_location_find(latitude, longitude) {
             $("#keyword").focus();
         }
     });
-
-    var latlng = new daum.maps.LatLng(latitude, longitude);
-    searchAddrFromCoords(latlng, function (result, status) {
-        if (status === daum.maps.services.Status.OK) {
-            console.log(result[0].address_name); // 읍,면,동까지의 주소
-            map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
-            map.setLevel(3);
-        }
-    });
 }
 
 /**
@@ -69,11 +60,6 @@ function storage_load() {
     var local_data = localStorage.getItem(storage_key); // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터을 가져온다.
     if (local_data != null) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터가 있으면 실행
         local_data = JSON.parse(local_data); // string 데이터를 json으로 변경
-        for (var i in local_data) { // 변경된 json 데이터를 돌려주며 로직 실행
-            local_places[i] = local_data[i];
-            var placePosition = new daum.maps.LatLng(local_data[i]['y'], local_data[i]['x']),
-                marker = addLocalMarker(placePosition, local_data[i]["reviews"]["grade"]);
-        }
         displayPlaces(local_data);
     }
 }
@@ -107,7 +93,6 @@ function searchPlaces() {
     }
     // 장소검색 객체를 통해 키워드로 장소검색을 요청 (검색 결과 값 넣어서 같이 검색)
     ps.keywordSearch(addrData + " " + keyword, placesSearchCB);
-    3;
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -139,7 +124,6 @@ function placesSearchCB(data, status, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-    console.log(places);
     var listEl = document.getElementById("placesList"),
         menuEl = document.getElementById("menu_wrap"),
         fragment = document.createDocumentFragment(),
@@ -218,21 +202,25 @@ function displayPlaces(places) {
                 });
                 // 오버레이 클릭시 detail.html 이동
                 $(".custom_overlay_wrap .body").on('click', function () {
+                    var keyword = document.getElementById("keyword").value;
+                    var addrData = $(".form_location").val();
                     var query = '?';
                     for (var key in place) {
                         query = query + key + '=' + place[key] + '&';
                     }
-                    location.href = "detail.html" + query;
+                    location.href = "detail.html" + query + "addr=" + addrData + "&food=" + keyword;
                 });
 
             });
 
             itemEl.onclick = function () {
+                var keyword = document.getElementById("keyword").value;
+                var addrData = $(".form_location").val();
                 var query = '?';
                 for (var key in place) {
                     query = query + key + '=' + place[key] + '&';
                 }
-                location.href = "detail.html" + query;
+                location.href = "detail.html" + query + "addr=" + addrData + "&food=" + keyword;
             };
             itemEl.onmouseover = function () {
                 displayInfowindow(marker, place.place_name);
@@ -389,7 +377,6 @@ function sample3_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function (data) {
             var addr = data.sido + " " + data.sigungu + " " + data.bname; // 주소 변수
-            console.log(addr);
             $(".form_location").val(addr);
             $(".address_tracking").hide();
         },
@@ -408,7 +395,6 @@ function sample3_execDaumPostcode() {
 $(function () {
 
     storage_load();
-    query_load();
 
     /**
      * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
@@ -452,9 +438,9 @@ $(function () {
     navigator.geolocation.getCurrentPosition(function (position) {
         my_location_find(position.coords.latitude, position.coords.longitude);
     });
-});
 
-// 주소 검색창을 닫는 버튼및 기능
-$(".cancel_address_tracking").click(function () {
-    $(".address_tracking").hide();
+    // 주소 검색창을 닫는 버튼및 기능
+    $(".cancel_address_tracking").click(function () {
+        $(".address_tracking").hide();
+    });
 });
