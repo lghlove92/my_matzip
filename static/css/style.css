@@ -86,6 +86,7 @@ h1,h2,h3,h4,h5,h6,p {
     border: none;
     right: 10px;
     top: 10px;
+    z-index: 3;
     background-color: transparent;
 }
 /*********************************************/
@@ -268,6 +269,9 @@ h1,h2,h3,h4,h5,h6,p {
 }
 .cancel_address_tracking {
     width: 100%;
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
 }
 
 /*
