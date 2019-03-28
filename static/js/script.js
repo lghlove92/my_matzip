@@ -365,7 +365,7 @@ $(function () {
     });
 
     var timeout;
-    $(".map_wrap").on("mousewheel DOMMouseScroll", function (e) {
+    $("#map").on("mousewheel DOMMouseScroll", function (e) {
         e.preventDefault();
 
         // ctrl누를때 text_p 나오게하기
