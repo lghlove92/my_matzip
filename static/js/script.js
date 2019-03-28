@@ -43,8 +43,9 @@ function my_location_find(latitude, longitude) {
     var latlng = new daum.maps.LatLng(latitude, longitude);
     searchAddrFromCoords(latlng, function (result, status) {
         if (status === daum.maps.services.Status.OK) {
-            console.log(result[0].address_name); // 읍,면,동까지의 주소
             map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
+            $(".form_location").val(result[0].address_name); // 읍,면,동까지의 주소를 주소 input에 넣음
+            $("#keyword").focus();
         }
     });
 }
