@@ -14,52 +14,41 @@
 
 <body>
     <!-- nav bar -->
-    <header>
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">My matzip</a>
-            <button type="button" class="btn btn-outline-warning login_signin">
-                Login
-            </button>
-        </nav>
-    </header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">My matzip</a>
+        <button type="button" class="btn btn-outline-warning login_signin">
+            Login
+        </button>
+    </nav>
     
-    <div id="fullpage">
-        <div class="section"> 
-            <div class="greeting_slide">
-
-            </div>
+    <div class="map_wrap">
+        <div id="map"></div>
+        <div id="overlay">
+            <p>지도를 확대/축소하려면 Ctrl을 누른 채 스크롤하세요.</p>
         </div>
-        <div class="section">  
-            <div class="map_wrap">
-                <div id="map"></div>
-                <div id="overlay">
-                    <p>지도를 확대/축소하려면 Ctrl을 누른 채 스크롤하세요.</p>
-                </div>
-                <div id="menu_wrap" class="bg_white">
-                    <div class="option">
-                        <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
-                            onclick="sample3_execDaumPostcode()" />
-                        <form onsubmit="searchPlaces(); return false;">
-                            <div class="input-group mb-3 food_input">
-                                <button type="submit" id="button-addon2">
-                                    <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
-                                </button>
-                                <input type="text" value="" id="keyword" size="15" class="form-control"
-                                    placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
-                            </div>
-                        </form>
-                        <div class="address_tracking">
-                            <button type="button" class="btn btn-outline-light cancel_address_tracking">
-                                검색 종료
-                            </button>
-                            <div id="wrap"></div>
-                        </div>
+        <div id="menu_wrap" class="bg_white">
+            <div class="option">
+                <input class="form-control form_location" type="text" placeholder="예) 서울특별시 강남구 신사동"
+                    onclick="sample3_execDaumPostcode()" />
+                <form onsubmit="searchPlaces(); return false;">
+                    <div class="input-group mb-3 food_input">
+                        <button type="submit" id="button-addon2">
+                            <img src="static/img/search_icon.png" style="width:17px;" class="search_icon">
+                        </button>
+                        <input type="text" value="" id="keyword" size="15" class="form-control"
+                            placeholder="#오늘 뭐 먹지...?" autocomplete="off" />
                     </div>
+                </form>
+                <div class="address_tracking">
+                    <button type="button" class="btn btn-outline-light cancel_address_tracking">
+                        검색 종료
+                    </button>
+                    <div id="wrap"></div>
                 </div>
-                <hr />
-                <ul id="placesList"></ul>
-                <div id="pagination"></div>
             </div>
+            <hr />
+            <ul id="placesList"></ul>
+            <div id="pagination"></div>
         </div>
     </div>
 

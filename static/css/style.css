@@ -1,12 +1,4 @@
 /* Common */
-/* 삭제 가능 */
-.greeting_slide{
-    width: 100%;
-    background-color: gray;
-    height: calc(100vh);
-    
-}
-
 html,
 body {
     height: 100%;
@@ -18,26 +10,13 @@ h1,h2,h3,h4,h5,h6,p {
     margin-bottom: 0;
 }
 /*********************************************/
-/* Map option */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
 
+/* Map option */
 #map {
     width: 100%;
     height: calc(100vh - 56px);
     position: relative;
     overflow: hidden;
-}
-.map_wrap,
-.map_wrap * {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
-    font-size: 12px;
 }
 .map_wrap a,
 .map_wrap a:hover,
@@ -48,8 +27,13 @@ header {
 .map_wrap {
     position: relative;
     width: 100%;
-    z-index: 10;
     height: calc(100vh - 56px);
+}
+.map_wrap, .map_wrap * {
+    margin: 0;
+    padding: 0;
+    font-family:'Malgun Gothic',dotum,'돋움',sans-serif;
+    font-size: 12px;
 }
 #menu_wrap {
     overflow-y: auto;
@@ -65,7 +49,6 @@ header {
     background: rgba(255, 255, 255, 0.7);
     border-radius: 0px;
 }
-/*********************************************/
 .address_tracking {
     overflow-y: auto;
     position: absolute;
@@ -98,7 +81,6 @@ header {
     z-index: 3;
     background-color: transparent;
 }
-/*********************************************/
 .bg_white {
     background: #fff;
 }

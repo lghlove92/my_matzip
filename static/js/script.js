@@ -47,6 +47,7 @@ function my_location_find(latitude, longitude) {
     searchAddrFromCoords(latlng, function (result, status) {
         if (status === daum.maps.services.Status.OK) {
             map.setCenter(new daum.maps.LatLng(latitude, longitude)); // 현재 위치로 지도 이동
+            map.setLevel(3);
             $(".form_location").val(result[0].address_name); // 읍,면,동까지의 주소를 주소 input에 넣음
             $("#keyword").focus();
         }
@@ -60,7 +61,12 @@ function storage_load() {
     var local_data = localStorage.getItem(storage_key); // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터을 가져온다.
     if (local_data != null) { // 로컬 스토리지에 있는 "matzip" 키에 대한 데이터가 있으면 실행
         local_data = JSON.parse(local_data); // string 데이터를 json으로 변경
+        local_places = local_data;
         displayPlaces(local_data);
+    } else {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            my_location_find(position.coords.latitude, position.coords.longitude);
+        });
     }
 }
 
@@ -95,6 +101,30 @@ function searchPlaces() {
     ps.keywordSearch(addrData + " " + keyword, placesSearchCB);
 }
 
+function query_load() {
+    var query = window.location.search.substr(1); // url에 있는 쿼리값을 가져온다.
+    if (query != "") {
+        var addrData = "";
+        var keyword = "";
+        var get_url_data = query.split("&"); // '&' 기준으로 나누어 배열로 저장
+        for (var i in get_url_data) { // 나눈값들을 하나 씩 돌리며 진행
+            if (get_url_data[i] !== "") { // 값이 있을 때만 실행
+                var split_data = get_url_data[i].split("="); // 값을 '=' 기준으로 나누어서 배열에 저장
+                var name = split_data[0]; // key를 'name' 변수에 저장
+                var value = decodeURIComponent(split_data[1]); // 값을 decode해서 'value' 변수에 저장
+                if (name == "addr") {
+                    $(".form_location").val(value);
+                    addrData = value;
+                } else if (name == "food") {
+                    $("#keyword").val(value);
+                    keyword = value;
+                }
+            }
+        }
+        ps.keywordSearch(addrData + " " + keyword, placesSearchCB);
+    }
+}
+
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
@@ -104,6 +134,7 @@ function placesSearchCB(data, status, pagination) {
             for (var i in data) {
                 for (var j in local_places) {
                     if (local_places[j]["id"] == data[i]["id"]) {
+                        console.log(data[i], local_places[j]);
                         data[i]['reviews'] = local_places[j]['reviews'];
                     }
                 }
@@ -395,7 +426,8 @@ function sample3_execDaumPostcode() {
 $(function () {
 
     storage_load();
-
+    query_load();
+    
     /**
      * ctrl누를때 줌 확대 축소기능과 텍스트 화면에 나오는 로직
      * */
@@ -432,11 +464,6 @@ $(function () {
     $(".form_location").click(function () {
         sample3_execDaumPostcode();
         $(".address_tracking").show();
-    });
-
-    // 현재 위치에 위도, 경도를 가져오는 로직
-    navigator.geolocation.getCurrentPosition(function (position) {
-        my_location_find(position.coords.latitude, position.coords.longitude);
     });
 
     // 주소 검색창을 닫는 버튼및 기능
