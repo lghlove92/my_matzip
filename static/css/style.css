@@ -9,6 +9,49 @@ h1,h2,h3,h4,h5,h6 {
 h1,h2,h3,h4,h5,h6,p {
     margin-bottom: 0;
 }
+.main_page_img{
+    background-color:#FDFFFF;
+    display: block;
+    height: 100%;
+}
+.main_page_img > span{
+    text-align: center;
+    position:absolute;
+    top:50%;
+    width: 100%;
+    height:100px;
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+.headText{
+    font-size: 40px;
+}
+/*********************************************/
+/* 글씨 */
+.hidden {
+    opacity:0;
+    }
+    .console-container {
+    font-family:'Quicksand', sans-serif;
+    font-size:4em;
+    text-align:center;
+    height:200px;
+    width:600px;
+    display:block;
+    position:absolute;
+    color: black;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    }
+    .console-underscore {
+    display:inline-block;
+    position:relative;
+    top:-0.14em;
+    left:10px;
+    }
 /*********************************************/
 
 /* Map option */
@@ -30,10 +73,7 @@ h1,h2,h3,h4,h5,h6,p {
     height: calc(100vh - 56px);
 }
 .map_wrap, .map_wrap * {
-    margin: 0;
-    padding: 0;
     font-family:'Malgun Gothic',dotum,'돋움',sans-serif;
-    font-size: 12px;
 }
 #menu_wrap {
     overflow-y: auto;
@@ -96,6 +136,12 @@ h1,h2,h3,h4,h5,h6,p {
 }
 #menu_wrap .option p {
     margin: 10px 0;
+}
+#placesList,
+#placesList *{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
 }
 #placesList li {
     list-style: none;
@@ -245,14 +291,13 @@ h1,h2,h3,h4,h5,h6,p {
 .custom_overlay_wrap * {padding: 0;margin: 0;}
 .custom_overlay_wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 .custom_overlay_wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-.custom_overlay_wrap .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.custom_overlay_wrap .info .title {padding: 5px 0 0 30px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
 .custom_overlay_wrap .info .custom_overlay_close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 .custom_overlay_wrap .info .custom_overlay_close:hover {cursor: pointer;}
-.custom_overlay_wrap .info .body {position: relative;overflow: hidden;}
-.custom_overlay_wrap .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-.custom_overlay_wrap .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.custom_overlay_wrap .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-.custom_overlay_wrap .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.custom_overlay_wrap .info .body {position: relative;overflow: hidden;margin: 20px 0px 20px 30px;height: 75px;}
+.custom_overlay_wrap .info .desc {position: relative;height: 75px;}
+.custom_overlay_wrap .body .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.custom_overlay_wrap .body .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 .custom_overlay_wrap .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .custom_overlay_wrap .info .link {color: #5085BB;}
 .popup_foot {
@@ -272,6 +317,7 @@ h1,h2,h3,h4,h5,h6,p {
     min-height: calc(100vh - 56px);
     padding-bottom: 40px;
     background-color: #f3f3f3;
+    overflow:scroll;
 }
 .detail_wrap {
     width: 100%;
@@ -420,3 +466,11 @@ h1,h2,h3,h4,h5,h6,p {
     float: right;
 }
 /********** End of Detail Page ***********/
+
+.section {
+    height: 100vh;
+}
+
+.fullpage {
+    overflow: hidden;
+}
